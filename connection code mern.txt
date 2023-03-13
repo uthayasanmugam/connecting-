@@ -1,0 +1,30 @@
+const handleSubmit = async (e) => {
+    alert("Register successfully")
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/user/register', {
+        method: 'POST',
+        // mode: 'no-cors',
+            cache: 'no-cache',
+            credentials: 'same-origin' ,
+
+        headers: {
+          'Content-Type':'application/json'
+        },
+        
+        body: JSON.stringify({
+          vendorname,
+          vendortype,
+          address,
+          pincode,
+          email,
+          mobileno
+        }),
+        
+      });
+      const data = await response.json();
+      console.log(data.message);
+    } catch (error) {
+      console.error(error);
+    }
+  }
